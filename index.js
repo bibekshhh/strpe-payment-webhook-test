@@ -5,6 +5,8 @@ const stripe = require('stripe')(process.env.TEST);
 const express = require('express');
 const app = express();
 
+const PORT = process.env.PORT || 4242;
+
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 const endpointSecret = process.env.ENDPOINT_SECRET;
@@ -37,4 +39,4 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
     response.send();
 });
   
-app.listen(4242, () => console.log('Running on port 4242'));
+app.listen(PORT, () => console.log(`Running on port ${PORT}`));
